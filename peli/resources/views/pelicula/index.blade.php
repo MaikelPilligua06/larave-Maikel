@@ -11,7 +11,15 @@
 <form action="/peliculas/crear" method="GET">
     <button type="submit">Crear una pelicula</button>
 </form>
-
+<form action="/actores" method="GET">
+    <button type="submit">Ver actores</button>
+</form>
+<form action="/actores/actorxpelicula" method="GET">
+    <button type="submit">Listar actor por pelicula</button>
+</form>
+<form action="/pelicula/peliculaxactor" method="GET">
+    <button type="submit">Listar pelicula por autor</button>
+</form>
     <table class="table table-striped table-hover">
     <thead class="table-dark">
     <tr>
@@ -20,6 +28,9 @@
         <th>Año estreno</th>
         <th>Numero de nominaciones</th>
         <th>Numero de oscars</th>
+        <th>Información</th>
+        <th>Borrar</th>
+        <th>Editar</th>
     </tr>
     </thead>
     <tbody>
@@ -30,10 +41,19 @@
             <td>{{ $asd->anoEstreno}}</td>
             <td>{{ $asd->numeroDeNominacionesOscar }} </td>
             <td>{{ $asd->numeroOscars }}</td>
+            <td>
+                <a href="/peliculas/{{ $asd->id }}" class="btn btn-info btn-sm">Veure</a>
+            </td>
+            <td>
+                <a href="/peliculas/eliminar/{{ $asd->id }}" class="btn btn-info btn-sm">Borrar pelicula</a>
+            </td>
+            <td>
+                <a href="/peliculas/{{ $asd->id }}/editar" class="btn btn-info btn-sm">Editar pelicula</a>
+            </td>
         </tr>
     @empty
         <tr>
-            <td colspan="4" class="text-center">No hay peliculas</td>
+            <td colspan="8" class="text-center">No hay peliculas</td>
         </tr>
     @endforelse
     </tbody>

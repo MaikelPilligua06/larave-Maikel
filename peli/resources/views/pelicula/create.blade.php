@@ -8,7 +8,7 @@
 <body class="container mt-5">
 <h1>Afegir un nou pelicula</h1>
 
-<form action="/peliculas/store" method="POST" class="mt-4 p-4 border rounded bg-light">
+<form action="/peliculas/crear" method="POST" class="mt-4 p-4 border rounded bg-light" enctype="multipart/form-data">
     @csrf  <div class="mb-3">
         <label class="form-label">Titulo de la del pelicula</label>
         <input type="text" name="titulo" class="form-control">
@@ -32,7 +32,19 @@
         <label class="form-label">Numero de Oscars</label>
         <input type="number" name="numeroOscars" class="form-control">
     </div>
-
+    <div class="mb-3">
+        <label class="form-label">Portada de la pelicula</label>
+        <input type="file" name="imatge" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Selecciona los actores: </label>
+        <select name="actores[]" class="form-select" multiple>
+            @foreach($actores as $actor)
+                <option value="{{ $actor->id }}"> {{ $actor->nombre }}</option>
+        @endforeach
+        </select>
+        <small class="muted-text">Manten presionado Ctrl para seleccionar más de uno</small>
+    </div>
     <button type="submit" class="btn btn-primary">Guardar a la biblioteca</button>
     <a href="/peliculas" class="btn btn-link">Tornar enrere</a>
 </form>
