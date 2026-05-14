@@ -1,0 +1,9 @@
+services:
+  db_postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: vdieojuegos
+      POSTGRES_USER: isard
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
